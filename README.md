@@ -4,13 +4,15 @@ In all data **ll_img** is the image reference that can be used to locate individ
 
 ## LL_BAEP_bastardy
 
-Approximately 1000 individuals identified in the St Botolph Aldgate pauper examinations as women who gave birth to illegitimate children, their illegitimate offspring, or putative fathers.
+Approximately 1000 individuals identified in the St Botolph Aldgate pauper examinations as women who gave birth to illegitimate children, illegitimate offspring, or alleged fathers.
 
 **LL_BAEP_bastardy_v1_201602.csv**
 
 ###Notes
 
-The accuracy of the data is not guaranteed; some errors in the data are likely, because most entries have not been individually checked. Apart from errors in the original London Lives data, some will have been introduced in the creation of this dataset (especially age data and examination dates, as these have been extracted from complex narrative texts
+The accuracy of the data is not guaranteed; some errors in the data are likely, because most entries have not been individually checked. Apart from errors in the original London Lives data, some will have been introduced in the creation of this dataset (especially age data and examination dates, as these have been extracted from complex narrative texts.
+
+Not all entries are from bastardy examinations as such; illegitimacy could affect an individual's entitlement to a settlement, so it was often mentioned in other examinations as well.
 
 ###Data fields
 
