@@ -37,7 +37,7 @@ This is a rudimentary dataset of examinants identified in London Lives 18th-cent
 * the examinations contain many more plebeian names - parents, children, siblings, employers, the alleged fathers of bastards, and so on.
 * the dataset currently does not contain any text from the examinations or further information about their contents.
 
-Fuller documentation to follow later...
+Fuller documentation to follow (eventually).
 
 ## More information about the source
 
