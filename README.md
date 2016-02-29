@@ -18,11 +18,12 @@ Not all entries are from bastardy examinations as such; illegitimacy could affec
 
 Most of these should be self-explanatory but note:
 
-* **fam_id** is used to group related individuals together; it's normally the same as the **LL img** but sometimes there were multiple examinations on one page, or an examination covered several pages.
+* **fam_id** is used to group related individuals together; it's normally the same as **ll_img** but sometimes there were multiple examinations on one page, or an examination covered several pages.
 * **examinant**:
-  * 1: this individual was the examinant, usually the mother
-  * 2: the examinant (not named in this dataset) was a witness, often a parish official, who gave evidence on behalf of the child or mother, or about the case 
+  * 1: this individual was the examinant (usually the mother)
+  * 2: the examinant was a witness not named in this dataset, often a parish official, who gave evidence on behalf of the child or mother (usually because she was ill), or to corroborate another examination 
   * 0: individual (usually child or father) named by the examinant
+* **child_surname**: in the examinations, the surname given to the child wasn't always explicitly stated; we assumed it would normally be the mother's surname and tagged the names as such. These are indicated by '*inferred*' in this column. (The data shows that our assumption was wrong and many of the children were in fact given the father's surname.)
 
 (Fuller documentation, as well as data for St Clement Danes, is in preparation.)
 
