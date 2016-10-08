@@ -192,11 +192,11 @@ Some examination dates (usually **exam_date**) are approximate. Not all examinat
 
 **Names data, consisting of examinants and subjects of examinations, their families and some other associates (especially employers).**
 
-**name_id** is the unique identifier for individual names. **exam_id**  groups together people in the same examination. 
-
-There has been no attempt to link individuals *between* examinations (it's not uncommon to have more than one examination for the same person/people). 
-
 Magistrates, parish officials and a small number of elite individuals have been omitted.
+
+**name_id** is the unique identifier for individual names. **exam_id**  groups together people in the same examination. There has been no attempt to link individuals *between* examinations (it's not uncommon to have more than one examination for the same person/people). 
+
+The data about settlements should be treated with some caution and considered a work in progress; although I think it's mostly reliable, it's far from complete.
 
 | field | description |
 |------|------------------|
@@ -226,7 +226,6 @@ Magistrates, parish officials and a small number of elite individuals have been 
 | ll_img | London Lives image reference |
 | ll_url | London Lives URL |
 
-The data about settlements should be treated with some caution and considered a work in progress; although I think it's mostly reliable, it's far from complete.
 
 
 #### llep_irregular_union_disunion_v1.tsv
