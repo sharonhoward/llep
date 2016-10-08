@@ -126,7 +126,7 @@ The names of magistrates, if present, appear in very predictable places (usually
 
 #### Finding additional information about examinations and individuals
 
-1. Using existing London Lives tagging and user-contributed roles
+* Using existing London Lives tagging and user-contributed roles
 
 The St Botolph Aldgate examinations were the very first documents the London Lives project tagged, as a test run for manual tagging and as training data for automated tagging. As a result, they were checked and marked up more exhaustively than most other documents. In particular, place and occupation/status tagging were comprehensively tagged and manually linked to individual names to an extent that turned out to be impracticable for the project as a whole. All of this information could be imported directly into the dataset.
 
@@ -134,7 +134,7 @@ Dates were also tagged well in both sets of examinations, but a little care was 
 
 Some tagged names in London Lives have had "roles" assigned to them manually by project members and site users. (This information is not part of the XML markup.) This was particularly useful in the case of the mothers of bastard children, and less systematically so in other cases. 
 
-2. Keyword and proximity searches around tagged names
+* Keyword and proximity searches around tagged names
 
 Additional information (or information missed by the original tagging) was obtained primarily by used of keyword searches in proximity to a tagged name: eg, "widow", "spinster/single woman" or "wife of" immediately after a woman's name, and occupations after a man's name. 
 
@@ -225,6 +225,8 @@ Magistrates, parish officials and a small number of elite individuals have been 
 | snip_txt | a snippet of text in the London Lives transcription around the name, for context and to aid identification in London Lives where different people in an examination share the same name |
 | ll_img | London Lives image reference |
 | ll_url | London Lives URL |
+
+The data about settlements should be treated with some caution and considered a work in progress; although I think it's mostly reliable, it's far from complete.
 
 
 #### llep_irregular_union_disunion_v1.tsv
