@@ -149,7 +149,7 @@ Some other information - eg, about irregular marriages and separations, and most
 
 
 
-Data summary
+Data 
 --------
 
 
@@ -174,7 +174,7 @@ Some examination dates (usually **exam_date**) are approximate. Not all examinat
 
 #### llep_petitions_v1.tsv
 
-**Summary information for each examination.**
+*Summary information for each examination.*
 
 
 | field | description |
@@ -190,7 +190,7 @@ Some examination dates (usually **exam_date**) are approximate. Not all examinat
 
 #### llep_names_v1.tsv
 
-**Names data, consisting of examinants and subjects of examinations, their families and some other associates (especially employers).**
+*Names data for examinants and subjects of examinations, their families and some other associates (especially employers).*
 
 Magistrates, parish officials and a small number of elite individuals have been omitted.
 
@@ -230,8 +230,9 @@ The data about settlements should be treated with some caution and considered a 
 
 #### llep_irregular_union_disunion_v1.tsv
 
-**Irregular Unions and Disunions** is a dataset of examinations that contain references to bigamous, irregular, clandestine or broken marriages and extramarital cohabitations. (The category 'separation' includes both explicit mentions of desertion and slightly more ambiguous absences.)
+*Examinations that contain references to bigamous, irregular, clandestine or broken marriages and extramarital cohabitations.* 
 
+The category 'separation' includes both explicit mentions of desertion and slightly more ambiguous (not necessarily permanent) absences.
 
 | field | description |
 |------|------------------|
@@ -253,6 +254,7 @@ The dataset has been created using the transcriptions of the Sessions Papers pub
 The original documents are held at the London Metropolitan Archives and the Westminster Archives Centre.
 
 The London Lives project (under the name Plebeian Lives) was funded by the Economic and Social Research Council between 2006-2010.
+
 
 License
 ---------
