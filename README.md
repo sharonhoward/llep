@@ -281,4 +281,4 @@ Future plans
 * Relationships data
 
 
-[zenodo link]
+[![DOI](https://zenodo.org/badge/51260676.svg)](https://zenodo.org/badge/latestdoi/51260676)
