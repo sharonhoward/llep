@@ -251,7 +251,7 @@ Acknowledgments
 
 The dataset has been created using the transcriptions of the Sessions Papers published at London Lives. I am deeply grateful to Tim Hitchcock and Bob Shoemaker, the London Lives project directors, for agreeing to share the data.
 
-The original documents are held at the London Metropolitan Archives.
+The original documents are held at the London Metropolitan Archives and the Westminster Archives Centre.
 
 The London Lives project (under the name Plebeian Lives) was funded by the Economic and Social Research Council between 2006-2010.
 
