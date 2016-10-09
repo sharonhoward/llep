@@ -1,4 +1,4 @@
-# London Lives Settlement, Bastardy and Vagrancy Examinations
+# London Lives Pauper Examinations
 
 Contents
 ---------
@@ -32,7 +32,7 @@ Metropolis](http://www.londonlives.org) is an online resource
 providing 'a wide range of primary sources about eighteenth-century
 London, with a particular focus on plebeian Londoners'. It contains more
 than 240,000 manuscript and printed pages from eight London archives,
-including records from 
+including parochial **Pauper Settlement, Vagrancy and Bastardy Examinations**. 
 
 Individual parishes used examinations conducted by one or two Justices of the Peace for three distinct purposes:
 
@@ -40,7 +40,9 @@ Individual parishes used examinations conducted by one or two Justices of the Pe
 -    to police bastardy, and as a basis for reclaiming the costs of supporting illegitimate children from the father
 -    as a contribution to the wider county prosecution of vagrancy. 
 
-London Lives has two series of pauper examinations, from the parishes of St Botolph Aldgate and St Clement Danes. It also contains pauper examinations in other series, but I have not yet attempted to extract these.
+The vast majority of examinations concerned pauper settlements (and most bastardy examinations were of poor women, whose offspring were 'likely to become chargeable' to a parish), and so this project uses the more concise term **pauper examinations** even though it's not technically accurate in all cases.
+
+London Lives has two series of pauper examinations, from the parishes of St Botolph Aldgate and St Clement Danes. It also contains pauper examinations in other series, but I have not (yet) attempted to extract these. 
 
 
 
@@ -138,14 +140,14 @@ Some tagged names in London Lives have had "roles" assigned to them manually by 
 
 Additional information (or information missed by the original tagging) was obtained primarily by used of keyword searches in proximity to a tagged name: eg, "widow", "spinster/single woman" or "wife of" immediately after a woman's name, and occupations after a man's name. 
 
-Because pauper examinations are relatively formulaic, it was possible to use this to extract a variety of kinds of information with some confidence in reliability of the information found, although if the information was written down in less standard ways it would be less likely to be found, eg:
+Because pauper examinations are relatively formulaic, it was possible to use this to extract a variety of kinds of information with some confidence in reliability of the information found (and that it was associated with the right person), although if the information was written down in less standard ways it would be less likely to be found, eg:
 
    - Ages
    - Bastardy
    - Information about settlements (work in progress)
    - Relationships (too unreliable and messy to release at present)
 
-Some other information - eg, about irregular marriages and separations, and most tagged place names  - has not (yet) been associated with specific individuals but is made available as examination-level data. 
+Some other information - eg, about irregular marriages and separations, and most tagged place names  - has not (yet) been associated with specific individuals but is made available as examination-level data. Only a small proportion of all tagged place data (primarily parishes and towns) in the XML files has been included here. 
 
 
 
@@ -196,6 +198,8 @@ Magistrates, parish officials and a small number of elite individuals have been 
 
 **name_id** is the unique identifier for individual names. **exam_id**  groups together people in the same examination. There has been no attempt to link individuals *between* examinations (it's not uncommon to have more than one examination for the same person/people). 
 
+In **exam_type**, bastardy and vagrancy are narrowly (legally) defined (and the type 'settlement' is a residual category for all other examinations). However, **bastardy_relationship** is used to record bastard mothers, (alleged) fathers and their offspring in *all* exams. 
+
 The data about settlements should be treated with some caution and considered a work in progress; although I think it's mostly reliable, it's far from complete.
 
 | field | description |
@@ -204,7 +208,7 @@ The data about settlements should be treated with some caution and considered a 
 | exam_id | examination ID |
 | exam_parish | St Botolph Aldgate or St Clement Danes |
 | exam_date | date of examination yyyy-mm-dd |
-| exam_type | settlement, bastardy or vagrancy. (Bastardy and vagrancy are narrowly defined here) |
+| exam_type | settlement, bastardy or vagrancy.  |
 | given | first name(s) |
 | surname | family name(s) |
 | altname | aliases, alternative names/spellings, and maiden names for married women |
@@ -218,8 +222,8 @@ The data about settlements should be treated with some caution and considered a 
 | exam_role1 |  examinant, examinant on behalf of pauper, pauper on behalf |
 | exam_role2 | pauper, witness, bastardy, vagrant |
 | incapacity | the reason (stated or inferred) that a pauper is unable to give evidence on their own behalf |
-| bastardy_relationship | bastardmother, bastardfather, bastard - used for all mentions of bastardy, not simply in 'bastardy' exams |
-| bf_description | some late bastardy cases give rich physical descriptions of the putative fathers |
+| bastardy_relationship | bastardmother, bastardfather, bastard  |
+| bf_description | rich physical descriptions of putative fathers, given in some late bastardy cases |
 | settlement | stated sources of eligibility for settlement: mainly apprenticeship, servant, rental |
 | geo | places (mainly parishes) mentioned in the examination |
 | snip_txt | a snippet of text in the London Lives transcription around the name, for context and to aid identification in London Lives where different people in an examination share the same name |
@@ -282,6 +286,8 @@ Future plans
 * Completion of settlement data
 * Addition of data about *regular* marriages (hopefully including dates and places)
 * Relationships data
+* Identify and extract pauper examinations and related material in the London Lives Sessions Papers
+* Linkage to related documents in London Lives, such as [Bastardy Bonds](https://www.londonlives.org/static/WB.jsp) and [Registers of Removed Paupers](https://www.londonlives.org/static/RV.jsp)
 
 
 [![DOI](https://zenodo.org/badge/51260676.svg)](https://zenodo.org/badge/latestdoi/51260676)
