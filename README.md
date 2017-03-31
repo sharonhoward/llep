@@ -23,6 +23,7 @@ Description
 
 Textual data and documentation relating to approximately 28000 individuals in 10700 examinations, originally digitised as part of [London Lives](http://www.londonlives.org).
 
+Supplementary data (March 2017): added smaller dataset of [St Clement Danes removal orders](https://github.com/sharonhoward/llep/tree/master/removal_orders).
 
 Background
 ------------
