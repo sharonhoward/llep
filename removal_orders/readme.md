@@ -19,7 +19,7 @@ Changes from version 1:
 
 * added a new summary table for orders, containing links to other orders, examinations and petitions
 * minor corrections to a number of errors in the names data
-* addition of to_area to names data
+* addition of removal area (city/county/country) to data
 
 **cd_removal_orders_v2_orders.tsv**
 
