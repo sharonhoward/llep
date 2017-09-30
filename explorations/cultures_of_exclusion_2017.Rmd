@@ -1,0 +1,275 @@
+---
+title: "Settlement and Removal: Poor Relief and Exclusion in 18th-century London"
+author: "Sharon Howard"
+date: "May 2017"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+```{r include=FALSE}
+# get some useful packages in
+
+library(dplyr)
+library(tidyr)
+library(ggplot2)
+library(scales)
+library(streamgraph)
+
+
+```
+
+
+Visualisations
+--------------
+
+Exploratory visualisations to accompany/supplement [my paper for the Cultures of Exclusion conference, May 2017](https://earlymodernnotes.wordpress.com/2017/05/20/settlement-and-removal-poor-relief-and-exclusion-in-18th-century-london/)
+
+The visualisations use two sources:
+
+* Settlement, bastardy and vagrancy examinations for St Clement Danes and St Botolph Aldgate 1739-1800
+* Register of removal orders for St Clement Danes, 1752-93, linked to the St Clement Danes examinations
+
+The sources are described in more detail in the link above, which also includes links to download the datasets (Creative Commons-licensed) for re-use. The summary data used for the visualisations and the underlying Rmarkdown code can also be downloaded from [my github repository](https://github.com/sharonhoward/llep/tree/master/explorations).
+
+
+
+```{r include=FALSE}
+## get data from tsv file
+
+
+# CD exams 1753-92 summary data
+exclusion_cdep_summary <- read.table("exclusion_cdep_summary.tsv",
+                   header=TRUE,
+                   sep="\t"         # use "\t" for tab-delimited files
+)
+
+# CD removal orders 1753-92 summary data 
+# nb this = v.2 of the data on github; presentation slides used v1
+exclusion_cdrv_summary <- read.table("exclusion_cdrv_v2_summary.tsv",
+                   header=TRUE,
+                   sep="\t" 
+)
+
+
+# BA exams 1753-92 (very) summary data
+exclusion_baep_summary <- read.table("exclusion_baep_summary.tsv",
+                   header=TRUE,
+                   sep="\t"         # use "\t" for tab-delimited files
+)
+
+```
+
+
+
+
+St Clement Danes and St Botolph Aldgate
+--------------
+
+The differences between the two series of examinations were quite surprising and raise a few caveats for quantitative analysis. The two series are very similar physically, bound volumes rather than loose files from which papers might easily go astray. But could there be missing volumes? Or not all examinations were copied into the books?
+
+
+```{r echo=FALSE}
+# cdep by year
+excl_cdep_year <- exclusion_cdep_summary %>% select(exam_year) %>% group_by(exam_year) %>% summarise(n_exams = n())
+
+# all cdep exams by year 1753-92
+ggplot(data=excl_cdep_year, aes(x=exam_year, y=n_exams)) +  
+  geom_bar(stat='identity') +
+  labs(title="Annual counts of St Clement Danes examinations 1753-92", y="examinations")
+
+```
+
+
+
+```{r echo=FALSE}
+# summarise baep by year
+excl_baep_year <- exclusion_baep_summary %>% 
+  select(exam_year) %>% group_by(exam_year) %>% summarise(n_exams = n())
+
+# baep excluding bastardy 1753-92
+ggplot(data=excl_baep_year, aes(x=exam_year, y=n_exams)) +  
+  geom_bar(stat='identity') +
+  labs(title="Annual counts of St Botolph Aldgate examinations 1753-92", y="examinations")
+
+```
+
+When St Clement Danes examinations are broken down by examination type it's clear that the vast majority were settlement examinations. About 10% were bastardy examinations; vagrancy examinations were a tiny number (<20). (Vagrancy examinations were recorded separately, often on pre-printed forms.)
+
+```{r echo=FALSE}
+
+
+# by year and examtype
+excl_cdep_year_examtype <- exclusion_cdep_summary %>% select(exam_year, exam_type) %>% group_by(exam_year, exam_type) %>% summarise(n_exams = n())
+
+
+# all cdep per year breakdown by exam type
+ggplot(data=excl_cdep_year_examtype, aes(x=exam_year, y=n_exams)) +  
+  geom_bar(position='stack', stat='identity', aes(fill=exam_type)) +
+  labs(title="Annual counts of St Clement Danes examinations 1753-92, by exam type", y="examinations")
+
+```
+The vast majority of exams in this series were settlement exams (green); bastardy exams (red) account for about 10% of the total. The vagrancy category is tiny. Vagrancy examinations were most often recorded on pre-printed forms and not copied into these records.
+
+
+St Clement Danes Removal Orders
+-------------
+
+Settlement examinations survive in vast numbers in archives. Records of removal orders, however, are much less common and they enable more systematic analysis of decision-making that followed an examination. 
+
+(Removal was only one possible outcome of a settlement examination, though; the pauper might establish they had a settlement in the parish (and therefore they may well turn up in later poor relief records), or they might be able to produce a settlement certificate from their own parish.) 
+
+For the period 1753-92, then, there are 5046 examinations and 2479 orders, of which 2357 could be linked to at least one exam. (Conversely, 2365 exams could be linked to at least one removal order.)
+
+```{r echo=FALSE}
+
+# by year
+excl_cdrv_year <- exclusion_cdrv_summary %>% select(doc_year) %>% group_by(doc_year) %>% summarise(n_orders = n())
+
+# cdrv all orders per year 1753-92
+ggplot(data=excl_cdrv_year, aes(x=doc_year, y=n_orders)) +  
+  geom_bar(stat='identity')  +
+  labs(title="Annual counts of all St Clement Danes removal orders 1753-92", y="orders")
+
+```
+
+```{r echo=FALSE}
+# by year and has_order, with pc
+excl_cdep_year_removal_wpc <- exclusion_cdep_summary %>% 
+  select(exam_year, has_order) %>% 
+  group_by(exam_year, has_order) %>% 
+  mutate(n_exams_yr = n()) %>%
+  group_by(exam_year) %>%
+  mutate(n_year = n()) %>%
+  group_by(exam_year, has_order, n_exams_yr, n_year) %>%
+  summarise() %>%
+  mutate(pc_year = n_exams_yr/n_year*100)
+
+ggplot(data=excl_cdep_year_removal_wpc, aes(x=exam_year,y=pc_year, fill=has_order, label=n_exams_yr ) ) +  
+  geom_bar(stat='identity') +
+  geom_text(position=position_stack(vjust=0.5), colour = "white", size=2.5, angle=90) +
+  labs(title="Linkage of St Clement Danes examinations to removal orders 1753-92", y="examinations")+
+  scale_fill_brewer(palette = "Dark2") +
+   theme(legend.position = "top")
+```
+
+
+
+```{r echo=FALSE}
+# by year and has_order
+excl_cdep_year_removal <- exclusion_cdep_summary %>% 
+  select(exam_year, has_order) %>% 
+  group_by(exam_year, has_order) %>% 
+  summarise(n_exams = n())
+
+# all cdep by year, breakdown by has_order
+ggplot(data=excl_cdep_year_removal, aes(x=exam_year, y=n_exams)) +  
+  geom_bar(position='stack', stat='identity', aes(fill=has_order)) +
+  labs(title="Linkage of St Clement Danes examinations to removal orders 1753-92", y="examinations")
+
+```
+
+
+The purpose of bastardy examinations was to establish paternity rather than being concerned with settlement, so very few resulted (directly) in removals. (However, some mothers were also examined concerning their settlements and may have been removed at a later date.)
+
+```{r echo=FALSE}
+
+# cdep: all types, by year and exam_type, has_order only
+excl_cdep_year_examtype_removal <- exclusion_cdep_summary %>% 
+  filter(has_order == 'yes') %>%
+  select(exam_year, exam_type) %>% 
+  group_by(exam_year, exam_type) %>% summarise(n_exams = n())
+
+# cdep has_order only per year, breakdown by exam type
+
+ggplot(data=excl_cdep_year_examtype_removal, aes(x=exam_year, y=n_exams)) +  
+  geom_bar(position='stack', stat='identity', aes(fill=exam_type)) +
+  labs(title="Annual counts of examinations linked to removal orders 1753-92, by exam type", y="examinations")
+
+```
+
+```{r echo=FALSE}
+ggplot(exclusion_cdep_summary, aes(exam_type) ) +
+  geom_bar(position='fill', aes(fill=has_order)) +
+  scale_y_continuous(labels = percent_format()) +
+  labs(title="Linkage rates of examinations to orders by exam type, overall 1753-92", y="%")
+
+```
+
+
+
+```{r echo=FALSE}
+
+# by year and has_order
+excl_cdep_year_removal_exb <- exclusion_cdep_summary %>% 
+  filter(exam_type != 'bastardy') %>%
+  select(exam_year, has_order) %>% group_by(exam_year, has_order) %>% summarise(n_exams = n())
+
+# cdep excluding bastardy, per year, breakdown by has_order, prop.stacked
+
+ggplot(data=excl_cdep_year_removal_exb, aes(x=exam_year, y=n_exams)) +  
+  geom_bar(position='fill', stat='identity', aes(fill=has_order)) +
+   scale_y_continuous(labels = percent_format()) +
+  labs(title="Annual linkage rates of examinations to orders, annually 1753-92", y="%")
+
+```
+
+
+
+```{r echo=FALSE}
+
+#filter with exams only, group by vagrancy, by year
+excl_cdrv_with_exams_by_vag_year <- exclusion_cdrv_summary %>%
+  filter(has_exam == 'yes') %>%
+  select(doc_year, vagrant) %>% group_by(doc_year, vagrant) %>% summarise(n_orders = n())
+
+# cdrv linked to exams per year, breakdown by order type (vagrant/pauper)
+ggplot(data=excl_cdrv_with_exams_by_vag_year, aes(x=doc_year, y=n_orders)) +  
+  geom_bar(position='stack', stat='identity', aes(fill=as.character(vagrant) )) +
+  scale_fill_discrete(name="order\ntype",
+                         breaks=c("1", "0"),
+                         labels=c("vagrant", "pauper")
+                      ) +
+  labs(title="Orders linked to exams, by removal type, annually 1753-92")
+
+```
+
+There are two types of removal order in the register: non-specific orders I'm simply calling ‘pauper removals’ and vagrant removals (sometimes called passes, as the vagrants were "passed" to their destinations). Most of the orders that couldn’t be linked to examinations were vagrant removals, but this graph shows a striking proportion of settlement exams ultimately resulted in *vagrant* removal orders, highlighting the fuzzy boundaries between the poor laws and vagrancy laws.
+
+
+Gender and examinations/removals
+-----------
+
+The following charts exclude bastardy examinations and a small number of examinations with both male and female examinants.
+
+Women (as in other studies) were the overwhelming majority of examinants even once bastardy examinations are excluded, around 75%, and in most years this percentage did not vary greatly.
+
+```{r echo=FALSE}
+
+# excl bastardy and mixed ext_gender, by year and ext_gender
+excl_cdep_year_exmg_exb_extgender <- exclusion_cdep_summary %>% 
+  filter(exam_type != 'bastardy', ext_gender != 'fm') %>%
+  select(exam_year, ext_gender) %>% group_by(exam_year, ext_gender) %>% summarise(n_exams = n())
+
+# cdep excluding bastardy & mixedgender, per year, breakdown by ext_gender
+ggplot(data=excl_cdep_year_exmg_exb_extgender, aes(x=exam_year, y=n_exams)) +  
+  geom_bar(position='stack', stat='identity', aes(fill=ext_gender)) +
+  labs(title="Gender of examinants, annual counts 1753-92", y="examinations")
+
+```
+
+
+
+```{r echo=FALSE}
+# cdep excluding bastardy & mixedgender, per year, breakdown by ext_gender
+ggplot(data=excl_cdep_year_exmg_exb_extgender, aes(x=exam_year, y=n_exams)) +  
+  geom_bar(position='fill', stat='identity', aes(fill=ext_gender))+
+   scale_y_continuous(labels = percent_format()) +
+  labs(title="Gender ratio of examinants annually, 1753-92", y="%")
+
+```
+
+
