@@ -254,7 +254,7 @@ The category 'separation' includes both explicit mentions of desertion and sligh
 Acknowledgments
 ---------------------
 
-The dataset has been created using the transcriptions of the Sessions Papers published at London Lives. I am deeply grateful to Tim Hitchcock and Bob Shoemaker, the London Lives project directors, for agreeing to share the data.
+The dataset has been created using the transcriptions of the documents published at London Lives. I am deeply grateful to Tim Hitchcock and Bob Shoemaker, the London Lives project directors, for agreeing to share the data.
 
 The original documents are held at the London Metropolitan Archives and the Westminster Archives Centre.
 
