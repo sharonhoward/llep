@@ -13,6 +13,11 @@ Contents
 -   Citation
 -   Future plans
 
+
+This data is released under a Creative Commons Attribution-ShareAlike 4.0 International Licence.
+
+[![License: CC BY-SA 4.0](https://licensebuttons.net/l/by-sa/4.0/80x15.png)](http://creativecommons.org/licenses/by-sa/4.0/)
+
 Description
 ----------------
 
