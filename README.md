@@ -7,12 +7,7 @@ Contents
 -   Background
 -   The examinations
 -   Methods and caveats
-    -  Essential background reading:
-    -  The source data
-    -  Data collection
 -   Data summary
-    -  Notes
-    -  Tables
 -   Acknowledgments
 -   License
 -   Citation
@@ -23,7 +18,10 @@ Description
 
 Textual data and documentation relating to approximately 28000 individuals in 10700 examinations, originally digitised as part of [London Lives](http://www.londonlives.org).
 
-Supplementary data (March 2017): added smaller dataset of [St Clement Danes removal orders](https://github.com/sharonhoward/llep/tree/master/removal_orders).
+September 2018: added plain text files of the examinations
+
+Supplementary data (March 2017): smaller dataset of [St Clement Danes removal orders](https://github.com/sharonhoward/llep/tree/master/removal_orders).
+
 
 Background
 ------------
@@ -124,7 +122,7 @@ The examinations contain many more names than those of the examinants - parents,
 
 #### Excluding magistrates and parish officials
 
-The names of magistrates, if present, appear in very predictable places (usually at the very end of the examination). Parish officials are less common but usually fairly straightforward to identify. Wherever possible, these have been removed from the dataset. (If requested, a version of the data that includes them can be made available.)
+The names of magistrates, if present, appear in very predictable places (usually at the very end of the examination). Parish officials are less common but usually fairly straightforward to identify. Wherever possible, these have been removed from the dataset. (A version of the data that includes them can be made available on request, but it should be borne in mind that magistrates' names were often not tagged because they signed with an initial rather than full first name.)
 
 
 #### Finding additional information about examinations and individuals
@@ -152,13 +150,12 @@ Some other information - eg, about irregular marriages and separations, and most
 
 
 
-Data 
+The Data 
 --------
-
 
 ### General notes
 
-The current version is 1.0, released October 2016. 
+The current release is 2.0, September 2018. 
 
 The accuracy of the data is not guaranteed; some errors in the data are likely, because most entries have not been individually checked. Apart from errors in the original London Lives data, some will have been introduced in the extraction of information from complex narrative texts. Please read the **methods** section carefully before using the data! 
 
@@ -172,7 +169,7 @@ The data tables are supplied in .tsv (tab separated values) format which can be 
 * **ll_img** is the image reference that can be used to locate individuals on the [London Lives](http://www.londonlives.org) website (using the reference search). In names data it may not always be the first page of an examination.
 * **ll_url** is based on ll_img: it will take you straight to the relevant page when pasted into a browser (spreadsheets may automatically display it as a clickable hyperlink).
 
-Some examination dates (usually **exam_date**) are approximate. Not all examinations were dated (and some had month and year only).
+Some examination dates (usually **exam_date**) are approximate. Not all examinations were dated; some had month and year only. An approximate date for undated examinations was inferred from their location in a volume.
 
 
 #### llep_petitions_v1.tsv
@@ -250,6 +247,10 @@ The category 'separation' includes both explicit mentions of desertion and sligh
 | ll_url | London Lives URL |
 
 
+#### llep_texts.zip
+
+This zipped archive contains plain text files of the examinations, 1 file per examination, organised into one folder for St Botolph Aldgate (2597 files) and one for St Clement Danes (8132 files). The **exam_id** is used to name each file. The text was extracted from the XML files using the Python library BeautifulSoup4.
+
 
 Acknowledgments
 ---------------------
@@ -277,16 +278,16 @@ Citation
 
 **Suggested citation**:
 
-Sharon Howard, The London Lives Pauper Examinations Database, version 1.0 (2016), based on data from *www.londonlives.org*.
+Sharon Howard, The London Lives Pauper Examinations Database, version 2.0 (2018), based on data from *www.londonlives.org*.
 
 
 Future plans
 -------------
 
-* Plain text corpus of all examinations 
 * Completion of settlement data
 * Addition of data about *regular* marriages (hopefully including dates and places)
 * Relationships data
+* Attempt extracton of early 18th-century St Clement Danes Register of Pauper Settlement and Bastardy Examinations
 * Identify and extract pauper examinations and related material in the London Lives Sessions Papers
 * Linkage to related documents in London Lives, such as [Bastardy Bonds](https://www.londonlives.org/static/WB.jsp) and [Registers of Removed Paupers](https://www.londonlives.org/static/RV.jsp)
 
